@@ -183,7 +183,7 @@ alpha_grains_rmats = rot.rotMatOfExpMap(gt[:, 3:6].T)
 # %%
 save_figs = True
 
-state_id = 5  # the state ID form the exp
+state_id = 7  # the state ID form the exp
 
 skip = 4
 
@@ -325,7 +325,7 @@ for map_id in range(len(eta_ome.dataStore)):
         ppts_grn = []
         for i, (hkl_id, grn_angs) in enumerate(zip(simg['GE2'][0],
                                                    simg['GE2'][2])):
-            if i not in [0, 3, 5, 6, 9, 10, 17, 19, 21, 24, 26, 29]:
+            if i not in [0, 3, 5, 6, 9, 10, 17, 18, 21, 24, 26, 29, 30, 34]: # [0, 3, 5, 6, 9, 10, 17, 19, 21, 24, 26, 29]:
                  continue
             k = int(np.ceil((i + 1)/(len(all_vars)/3))) - 1
             on_map = np.where(hkl_id == master_hkl_ids[map_id])[0]
@@ -336,7 +336,7 @@ for map_id in range(len(eta_ome.dataStore)):
                                                  method='equal-area',
                                                  use_mask=False)
                 ax[i_pl].plot(these_ppts[:, 0], these_ppts[:, 1],
-                              marker_omega[i], ms=12,
+                              marker_omega[i], ms=8, mew=0.5,
                               mec=colors_alpha[k], mfc='none')
         ax[i_pl].axis('off')
         ax[i_pl].set_title(r'$\omega\in(%d^\circ, %d^\circ)$'
