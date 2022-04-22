@@ -183,9 +183,9 @@ alpha_grains_rmats = rot.rotMatOfExpMap(gt[:, 3:6].T)
 # %%
 save_figs = True
 
-state_id = 6  # the state ID form the exp
+state_id = 5  # the state ID form the exp
 
-skip = 10
+skip = 4
 
 # eta_ome = EtaOmeMaps('./omega_state_005_omega-zr_maps.npz')
 # eta_ome = EtaOmeMaps('results_oZr_0005_omega-zr-5GPa_eta_ome_maps.npz')
@@ -325,8 +325,8 @@ for map_id in range(len(eta_ome.dataStore)):
         ppts_grn = []
         for i, (hkl_id, grn_angs) in enumerate(zip(simg['GE2'][0],
                                                    simg['GE2'][2])):
-            # if i not in [0, 3, 5, 6, 9, 10, 17, 24, 28, 29, 34]:
-            #     continue
+            if i not in [0, 3, 5, 6, 9, 10, 17, 19, 21, 24, 26, 29]:
+                 continue
             k = int(np.ceil((i + 1)/(len(all_vars)/3))) - 1
             on_map = np.where(hkl_id == master_hkl_ids[map_id])[0]
             if len(on_map) > 0:
